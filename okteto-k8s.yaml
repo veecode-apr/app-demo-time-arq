@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-demo-time-arq 
+spec:
+  selector:
+    matchLabels:
+      app: app-demo-time-arq
+  template:
+    metadata:
+      labels:
+        app: app-demo-time-arq
+    spec:
+      containers:
+        - image: okteto.dev/java-gradle-app-demo-time-arq:1.0.0
+          name: app-demo-time-arq
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-demo-time-arq
+spec:
+  type: ClusterIP
+  ports:
+    - name: "app-demo-time-arq"
+      port: 8080
+  selector:
+    app: app-demo-time-arq
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-demo-time-arq
+  annotations:
+    dev.okteto.com/generate-host: app-demo-time-arq
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: app-demo-time-arq
+                port:
+                  number: 8080
+            path: /
+            pathType: ImplementationSpecific

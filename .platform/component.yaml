@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-demo-time-arq
+  description: "app-demo-time-arq"
+  annotations:
+    github.com/project-slug: veecode-apr/app-demo-time-arq
+    backstage.io/techdocs-ref: dir:..
+    backstage.io/kubernetes-id: "app-demo-time-arq"
+    vault.io/secrets-path: "app-demo-time-arq"
+    grafana/dashboard-selector: "app-demo-time-arq"
+    grafana/alert-label-selector: "alertname=app-demo-time-arq"
+    argocd/proxy-url: '/argocd/api'
+    argocd/app-name: "app-demo-time-arq"
+    kong-manager/service-name: veecode-apr.app-demo-time-arq-service-0.8080
+    kong-manager/instance: /kong-manager/api
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "group:default/admin"

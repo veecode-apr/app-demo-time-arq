@@ -1,0 +1,8 @@
+project:
+  name: app-demo-time-arq
+  description: app-demo-time-arq
+  java:
+    package: codes.platform.demo
+  language: java
+  framework: springboot
+  applicationPort: 8080

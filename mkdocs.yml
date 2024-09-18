@@ -1,0 +1,8 @@
+site_name: "app-demo-time-arq"
+site_description: "app-demo-time-arq"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
